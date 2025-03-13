@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=64.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "game"
+dynamic = ["version"]
+description = "Conway's Game of Life in your terminal"
+readme = "README.md"
+authors = [{ name = "Cole Herman"}]
+dependencies = [
+    'tomli; python_version < "3.11"',
+]
+
+[project.scripts]
+game = "game.__main__:main"
+
+[tool.setuptools.dynamic]
+version = {attr = "game.__version__"}

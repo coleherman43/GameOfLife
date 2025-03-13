@@ -1,0 +1,7 @@
+Metadata-Version: 2.2
+Name: game
+Version: 1.0.0
+Summary: Conway's Game of Life in your terminal
+Author: Cole Herman
+Description-Content-Type: text/markdown
+Requires-Dist: tomli; python_version < "3.11"
