@@ -26,7 +26,7 @@ def get_command_line_args():
     parser.add_argument(
         "-v",
         "--view",
-        choices=views.__all__,
+        choices=views.__all__ + ["PygameView"],
         default="CursesView",
         help="display the life grid in a specific view (default: %(default)s)",
     )
