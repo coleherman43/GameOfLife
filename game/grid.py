@@ -1,12 +1,32 @@
 import collections
+import random
 
 ALIVE = "♥"
 DEAD = "‧"
 
 
 class LifeGrid:
-    def __init__(self, pattern):
+    def __init__(self, pattern, num_patterns=1, randomize=False, start_row=0, start_col=0):
         self.pattern = pattern
+        self.num_patterns = num_patterns
+        self.randomize = randomize
+        self.start_row = start_row
+        self.start_col = start_col
+        self.alive_cells = set()
+        self.add_patterns()
+
+    def add_patterns(self):
+        for _ in range(self.num_patterns):
+            if self.randomize:
+                row_offset = random.randint(0,50)
+                col_offset = random.randint(0,50)
+            else:
+                row_offset = self.start_row
+                col_offset = self.start_col
+            self.alive_cells.update({
+                (row + row_offset, col + col_offset)
+                for row, col in self.pattern.alive_cells
+            })
 
     def evolve(self):
         neighbors = (
