@@ -1,11 +1,12 @@
 import argparse
+import random
 
 from game import __version__, patterns, views
 
 def get_command_line_args():
     parser =  argparse.ArgumentParser(
         prog="game",
-        description="Conway's Game of Life in your terminal",
+        description="Conway's Game of Life in your terminal (or window)",
     )
 
     parser.add_argument(
@@ -47,6 +48,22 @@ def get_command_line_args():
         type=int,
         default=7,
         help="frames per second (default: %(default)s)",
+    )
+
+    parser.add_argument(
+        "-n",
+        "--num-patterns",
+        metavar="NUM_PATTERNS",
+        type=int,
+        default=1,
+        help="number of each pattern to add (default: %(default)s)",
+    )
+
+    parser.add_argument(
+        "-r",
+        "--randomize",
+        action="store_true",
+        help="randomize the positions of the patterns",
     )
 
     return parser.parse_args()
