@@ -2,7 +2,7 @@ import pygame
 from game.grid import LifeGrid
 
 class PygameView:
-    def __init__(self, pattern, gen=100, frame_rate=7, cell_size=10, grid_color=(200,200,200), alive_color=(0,255,0), dead_color=(0,0,0)):
+    def __init__(self, pattern, gen=100, frame_rate=7, cell_size=10, grid_color=(200,200,200), alive_color=(0,255,0), dead_color=(0,0,0), num_patterns=1, randomize=False, start_row=0, start_col=0):
         self.pattern = pattern
         self.gen = gen
         self.frame_rate = frame_rate
@@ -10,7 +10,7 @@ class PygameView:
         self.grid_color = grid_color
         self.alive_color = alive_color
         self.dead_color = dead_color
-        self.grid = LifeGrid(pattern)
+        self.grid = LifeGrid(pattern, num_patterns=num_patterns, randomize=randomize, start_row=start_row, start_col=start_col)
         self.width = 800
         self.height = 600
         self.screen = None
@@ -40,7 +40,7 @@ class PygameView:
         self.screen.fill(self.dead_color)
         for row in range(self.height // self.cell_size):
             for col in range(self.width // self.cell_size):
-                color = self.alive_color if (row, col) in self.grid.pattern.alive_cells else self.dead_color
+                color = self.alive_color if (row, col) in self.grid.alive_cells else self.dead_color
                 pygame.draw.rect(
                     self.screen,
                     color,
@@ -50,5 +50,3 @@ class PygameView:
             pygame.draw.line(self.screen, self.grid_color, (x, 0), (x, self.height))
         for y in range(0, self.height, self.cell_size):
             pygame.draw.line(self.screen, self.grid_color, (0, y), (self.width, y))
-
-    

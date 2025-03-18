@@ -7,7 +7,7 @@ from game.pygame_view import PygameView
 def main():
     args = get_command_line_args()
     if args.view == "PygameView":
-        View  =PygameView
+        View = PygameView
     else:
         View = getattr(views, args.view)
     if args.all:
@@ -32,7 +32,7 @@ def main():
 
 def _show_pattern(View, pattern, args):
     try:
-        View(pattern=pattern, gen=args.gen, frame_rate=args.fps).show()
+        View(pattern=pattern, gen=args.gen, frame_rate=args.fps, num_patterns=args.num_patterns, randomize=args.randomize, start_row=args.start_row, start_col=args.start_col).show()
     except Exception as error:
         print(error, file=sys.stderr)
 
