@@ -66,4 +66,22 @@ def get_command_line_args():
         help="randomize the positions of the patterns",
     )
 
+    parser.add_argument(
+        "-sr",
+        "--start-row",
+        metavar="START_ROW",
+        type=int,
+        default=0,
+        help="starting row for the pattern (default: %(default)s)",
+    )
+
+    parser.add_argument(
+        "-sc",
+        "--start-col",
+        metavar="START_COL",
+        type=int,
+        default=0,
+        help="starting column for the pattern (default: %(default)s)",
+    )
+
     return parser.parse_args()

@@ -40,7 +40,7 @@ class PygameView:
         self.screen.fill(self.dead_color)
         for row in range(self.height // self.cell_size):
             for col in range(self.width // self.cell_size):
-                color = self.alive_color if (row, col) in self.grid.pattern.alive_cells else self.dead_color
+                color = self.alive_color if (row, col) in self.grid.alive_cells else self.dead_color
                 pygame.draw.rect(
                     self.screen,
                     color,
@@ -50,5 +50,3 @@ class PygameView:
             pygame.draw.line(self.screen, self.grid_color, (x, 0), (x, self.height))
         for y in range(0, self.height, self.cell_size):
             pygame.draw.line(self.screen, self.grid_color, (0, y), (self.width, y))
-
-    
